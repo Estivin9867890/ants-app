@@ -407,7 +407,7 @@ function EditProfileModal({ profile, onSave, onClose }: { profile: { name: strin
           ].map(field => (
             <div key={field.key}>
               <label style={{ fontSize: 11, fontWeight: 600, color: '#9CA3AF', display: 'block', marginBottom: 6, letterSpacing: 1 }}>{field.label}</label>
-              <input value={(form as Record<string, string>)[field.key]} onChange={e => setForm(f => ({ ...f, [field.key]: e.target.value }))}
+              <input value={String((form as Record<string, unknown>)[field.key] ?? "")} onChange={e => setForm(f => ({ ...f, [field.key]: e.target.value }))}
                 placeholder={field.placeholder} style={{ width: '100%', padding: '11px 14px', borderRadius: 14, border: '1.5px solid rgba(0,0,0,0.1)', fontSize: 14, outline: 'none', fontFamily: 'inherit', background: 'white' }} />
             </div>
           ))}
